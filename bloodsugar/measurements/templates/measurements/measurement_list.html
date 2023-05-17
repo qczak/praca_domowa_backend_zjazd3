@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista pomiarów{% endblock %}
+
+{% block content %}
+<a href="{% url 'measurements_all' %}">Wszystkie pomiary.</a>
+<a href="{% url 'chart' %}">Wykres.</a>
+<h1>Lista pomiarów</h1>
+
+{% for row in measure %}
+<li> Pomiar nr: {{ row.id }} : <a href="{% url 'measurement_detail' row.id %}">{{ row.measured_date|date:"j F Y" }}</a>
+</li>
+
+{% endfor %}
+
+{% endblock %}

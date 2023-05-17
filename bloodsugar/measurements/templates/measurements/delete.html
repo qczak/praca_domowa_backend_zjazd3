@@ -1,0 +1,28 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Wykres pomiarów{% endblock %}
+
+{% block content %}
+Czy na pewno chcesz usunąć pomiar: <br>
+<div>
+    <div class="col_top">Value</div>
+    <div class="col_top">Date</div>
+    <div class="col_top">Notes</div>
+</div>
+<div>
+    <div class="row">
+        <div class="col_last">{{ measurement.value }}</div>
+        <div class="col_last">{{ measurement.measured_date|date:"j F Y"  }}</div>
+        <div class="col_last">{{ measurement.notes }}</div>
+    </div>
+</div>
+<br>
+<form method="POST">
+  {% csrf_token %}
+  <input type="hidden" name="measurement_id" value="{{ measurement.id }}">
+  <button type="submit" name="action" value="delete">Usuń</button>
+  <button type="submit" name="action" value="back">Powrót</button>
+</form>
+
+{% endblock %}

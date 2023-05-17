@@ -1,0 +1,40 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Wykres pomiarów{% endblock %}
+
+{% block content %}
+
+<a href="{% url 'measurement_list' %}">Powrót do listy pomiarów.</a><br>
+<a href="{% url 'chart' %}">Wykres ze <b>wszsytkimi</b> wartościami dla danego dnia.</a>
+
+
+<canvas id="myChart"></canvas>
+
+<canvas id="myChart" width="800" height="400"></canvas>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+  const ctx = document.getElementById('myChart').getContext('2d');
+  const myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels : [{% for item in labels %}"{{ item }}",{% endfor %}],
+          datasets: [{
+            label: "Pomiary krwi",
+            data : [{% for item in values %}{{ item }},{% endfor %}],
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 2
+          }]
+      },
+      options: {
+          scales: {
+              y: {
+                  beginAtZero: true
+              }
+          }
+      }
+  });
+  </script>
+
+{% endblock %}

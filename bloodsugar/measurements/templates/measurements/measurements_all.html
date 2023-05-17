@@ -1,0 +1,22 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Lista pomiarów{% endblock %}
+
+{% block content %}
+<a href="{% url 'measurement_list' %}">Powrót do listy pomiarów.</a>
+<div>
+    <div class="col_top">Value</div>
+    <div class="col_top">Date</div>
+    <div class="col_top">Notes</div>
+</div>
+<div>
+    {% for row in measure %}
+    <div class="row">
+        <div {% if forloop.last %} class=col_last {% else %} class=col  {% endif %}>{{ row.value }}</div>
+        <div {% if forloop.last %} class=col_last {% else %} class=col  {% endif %}>{{ row.measured_date|date:"j F Y" }}</div>
+        <div {% if forloop.last %} class=col_last {% else %} class=col  {% endif %}>{{ row.notes }}</div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
