@@ -1,14 +1,9 @@
-from cProfile import label
-
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
-from django.forms import models, ModelForm, CheckboxSelectMultiple
-from jsonschema._validators import required
-from prompt_toolkit.widgets import Checkbox
-
-from notatki.models import UserProfile, Note, Tag
+from django.forms import ModelForm, CheckboxSelectMultiple
+from notatki.models import Note, Tag
 from django import forms
 
 

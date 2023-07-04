@@ -1,23 +1,16 @@
-from django.conf import settings
-from django.http import HttpResponseRedirect, HttpResponse
-from IPython.core.release import author
-from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Submit
-from django.contrib import messages, auth
+
+from django.http import HttpResponse
+
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView
 from django.db import IntegrityError
-from django.shortcuts import render, get_object_or_404
-import django.views.generic
 from django.urls import reverse, reverse_lazy
-from django.views import generic, View
 from django.views.generic import TemplateView, ListView, CreateView, FormView, DetailView
-from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.forms import UserCreationForm
-from django.shortcuts import redirect, render
+from django.contrib.auth import login, logout
+from django.shortcuts import redirect
 from django.utils.decorators import method_decorator
-from django.views.generic.edit import FormMixin, UpdateView
+from django.views.generic.edit import UpdateView
 
 from notatki.forms import UserRegisterForm, UserLoginForm, NoteForm, NoteSearchForm
 from notatki.models import UserProfile, Note, Tag
@@ -194,5 +187,4 @@ class TagsListAndForm(NavBarHendler, ListView):
                 # Dodajemy komunikat do kolejki wiadomości
                 messages.error(request, 'Tag o podanej nazwie już istnieje.')
             return self.get(request, *args, **kwargs)
-            # return redirect('notatki:tags')
         return super().post(request, *args, **kwargs)

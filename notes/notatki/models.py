@@ -1,8 +1,5 @@
-from enum import unique
-
 from django.db import models
 
-# Create your models here.
 class UserProfile(models.Model):
     user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     def __str__(self):
