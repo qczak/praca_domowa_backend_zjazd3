@@ -1,0 +1,13 @@
+{% extends "notatki/base.html" %}
+{% load  crispy_forms_tags %}
+{% block content %}
+  <div class="container p-4">
+    {% if user.is_authenticated %}
+      <h3> Witaj {{ user.username }}! </h3>
+      <h4> Masz {{ dane }} notatki. </h4>
+    {% else %}
+      <h3> Musisz się zalogować aby móc korzystać z notatnika i przegladać swoje notatki. </h3>
+    {% endif %}
+  </div>
+
+{% endblock %}

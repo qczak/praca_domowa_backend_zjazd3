@@ -1,0 +1,11 @@
+{% extends "notatki/base.html" %}
+{% load crispy_forms_tags %}
+{% block title %} Logowanie {% endblock %}
+
+{% block content %}
+<div class="w-100 d-flex flex-column align-items-center justify-content-center">
+
+    {% crispy form %}
+
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "notatki/base.html" %}
+{% block content %}
+<div class="container p-5 my-2 bg-dark text-white rounded-3 shadow-lg">
+    <h2> Tytuł: {{ note.title }} </h2>
+    <p> Autor: {{ note.author }} </p>
+    <p> Utworzona: {{ note.created }} </p>
+    <p> {{ note.content }} </p>
+
+    <form method="post">
+        {% csrf_token %}
+        <a class="btn btn-primary" href='{% url "notatki:note_edit"  note.id %}'>Edytuj</a>
+        <input class="btn btn-primary" type="submit" name='delete_note' value="Kasuj">
+    </form>
+    <h2>Tagi:</h2>
+
+      {% for tag in tags %}
+        <span class="badge  bg-info">{{ tag.name }}</span>
+      {% endfor %}
+
+</div>
+{% endblock %}
