@@ -17,9 +17,7 @@ from notatki.models import UserProfile, Note, Tag
 
 class NavBarHendler:
     def post(self, request, *args, **kwargs):
-        print(request.POST)
         if 'logout' in request.POST:
-            print('test POST logout')
             logout(request)
             return redirect('notatki:home')
         if hasattr(super(), 'some_method'):
@@ -105,7 +103,6 @@ class MyLoginView(LoginView):
     form_class = UserLoginForm
     next_page = 'notatki:notes_list'
     def form_invalid(self, form):
-        print('dupa dupa')
         messages.error(self.request,'Invalid username or password')
         return self.render_to_response(self.get_context_data(form=form))
 

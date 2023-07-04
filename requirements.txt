@@ -2,3 +2,5 @@ django
 
 factory_boy
 ipython
+django-crispy-forms
+crispy-bootstrap5
