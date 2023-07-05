@@ -20,7 +20,7 @@ class NavBarHendler:
         if 'logout' in request.POST:
             logout(request)
             return redirect('notatki:home')
-        if hasattr(super(), 'some_method'):
+        if hasattr(super(), 'post'):
             return super().post(request, *args, **kwargs)
         return HttpResponse('Metoda post nie jest dostępna w klasie nadrzędnej.')
 
@@ -36,7 +36,7 @@ class HomeTemplateView(NavBarHendler, TemplateView):
 
 
 @method_decorator(login_required, name='dispatch')
-class NotesList(NavBarHendler, ListView, FormView, ):
+class NotesList(NavBarHendler, ListView, FormView):
     form_class = NoteSearchForm
     success_url = reverse_lazy('notatki:notes_list')
     def get_queryset(self):
